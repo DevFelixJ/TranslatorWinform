@@ -6,6 +6,7 @@ He usado el repositorio de Newtonsoft.Json y la api http://api.mymemory.translat
 -2 cajas de texto, uno para el texto de entrada en español y otro de salida para traducirlo al inglés.
 
 -1 botón que hace la llamada a la traducción.
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Spanish to English translator using Winform with C#.
 
