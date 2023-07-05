@@ -19,29 +19,29 @@ namespace Traductor
         public Form1()
         {
             InitializeComponent();
-            txtOutput.ReadOnly = true;
+            txtOutput.ReadOnly = true; //Aqui le indicamos que el texto de salida sea solo de lectura para que no se pueda escribir en el.
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-            txtOutput.Text = string.Empty;
+            txtOutput.Text = string.Empty; //Esto hace que al empezar a borrar el texto de entrada, la caja de texto de salida se quede vacio.
         }
 
         private async void btnTranslate_Click(object sender, EventArgs e)
         {
-            string inputText = txtInput.Text;
+            string inputText = txtInput.Text; //Al hacer click en el boton traducir, Guardamos la cadena de texto de la caja de entrada en una variable.
 
             if (!string.IsNullOrWhiteSpace(inputText))
             {
-                string translatedText = await TranslateText(inputText);
-                txtOutput.Text = translatedText;
+                string translatedText = await TranslateText(inputText); //Si la cadena de texto no esta en blanco ni solo tiene un espacio en blanco, el texto a traducir hace un request a la api
+                txtOutput.Text = translatedText;// Si despues de llamar a la api, da todo OK, la caja de texto de salida mostrara la traduccion.
             }
 
         }
 
-        private async Task<string> TranslateText(string inputText)
+        private async Task<string> TranslateText(string inputText) // Esta api
         {
-            string url = $"http://api.mymemory.translated.net/get?q={Uri.EscapeDataString(inputText)}&langpair=es|en";
+            string url = $"http://api.mymemory.translated.net/get?q={Uri.EscapeDataString(inputText)}&langpair=es|en"; //Llamada a la api diciendo que el origen es ES y el de salida EN
 
             using (HttpClient client = new HttpClient())
             {
