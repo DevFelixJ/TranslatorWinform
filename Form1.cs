@@ -19,11 +19,12 @@ namespace Traductor
         public Form1()
         {
             InitializeComponent();
+            txtOutput.ReadOnly = true;
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-
+            txtOutput.Text = string.Empty;
         }
 
         private async void btnTranslate_Click(object sender, EventArgs e)
