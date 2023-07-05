@@ -1,5 +1,5 @@
 # TranslatorWinform
-Traductor de Español a Inglés usando Winform con C#.
+Traductor usando Winform con C#.
 
 He usado el repositorio de Newtonsoft.Json y la api http://api.mymemory.translated.net/ para realizar las traducciones sin necesidad de keys.
 
@@ -11,7 +11,7 @@ Actualización:
 He añadido dos comboBoxes para elegir entre 4 idiomas (Español, inglés, Francés, Alemán) a traducir.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
-Spanish to English translator using Winform with C#.
+Translator using Winform with C#.
 
 I have used the Newtonsoft.Json repository and the http://api.mymemory.translated.net/ API to perform translations without keys.
 
