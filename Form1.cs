@@ -16,32 +16,57 @@ namespace Traductor
 {
     public partial class Form1 : Form
     {
+        private Dictionary<string, string> languageCodes; //Se crea el diccionario para guardar los idiomas de entrada y salida.
         public Form1()
         {
             InitializeComponent();
-            txtOutput.ReadOnly = true; //Aqui le indicamos que el texto de salida sea solo de lectura para que no se pueda escribir en el.
+            txtOutput.ReadOnly = true;
+
+            languageCodes = new Dictionary<string, string> //Se implementa el contenido del diccionario.
+            {
+                {"Español" , "es"},
+                {"Inglés", "en" },
+                {"Francés", "fr" },
+                {"Alemán", "de" }
+            };
+
+            //Agregar idiomas de entrada cmbInputLanguage
+            cmbInputLanguage.DataSource = new BindingSource(languageCodes, null);
+            cmbInputLanguage.DisplayMember = "Key";
+            cmbInputLanguage.ValueMember = "Value";
+            cmbInputLanguage.SelectedIndex = 0; //Idioma por defecto de entrada.En mi caso he elegido Español
+
+            //Agregar idiomas de salida cmbOutputLanguage
+            cmbOutputLanguage.DataSource = new BindingSource(languageCodes, null);
+            cmbOutputLanguage.DisplayMember = "Key";
+            cmbOutputLanguage.ValueMember = "Value";
+            cmbOutputLanguage.SelectedIndex = 1; //Idioma por defecto de salida. En mi caso he elegido Inglés
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-            txtOutput.Text = string.Empty; //Esto hace que al empezar a borrar el texto de entrada, la caja de texto de salida se quede vacio.
+            txtOutput.Text = string.Empty;
         }
 
         private async void btnTranslate_Click(object sender, EventArgs e)
         {
-            string inputText = txtInput.Text; //Al hacer click en el boton traducir, Guardamos la cadena de texto de la caja de entrada en una variable.
+            string inputText = txtInput.Text;
 
             if (!string.IsNullOrWhiteSpace(inputText))
             {
-                string translatedText = await TranslateText(inputText); //Si la cadena de texto no esta en blanco ni solo tiene un espacio en blanco, el texto a traducir hace un request a la api
-                txtOutput.Text = translatedText;// Si despues de llamar a la api, da todo OK, la caja de texto de salida mostrara la traduccion.
+                string inputLanguage = ((KeyValuePair<string,  string>)cmbInputLanguage.SelectedItem).Value;
+                string outputLanguage = ((KeyValuePair<string, string>)cmbOutputLanguage.SelectedItem).Value;
+
+                    string translatedText = await TranslateText(inputText, inputLanguage, outputLanguage);
+                    txtOutput.Text = translatedText;
+                
             }
 
         }
 
-        private async Task<string> TranslateText(string inputText) // Esta api
+        private async Task<string> TranslateText(string inputText, string inputLanguage, string outputLanguage)
         {
-            string url = $"http://api.mymemory.translated.net/get?q={Uri.EscapeDataString(inputText)}&langpair=es|en"; //Llamada a la api diciendo que el origen es ES y el de salida EN
+            string url = $"http://api.mymemory.translated.net/get?q={Uri.EscapeDataString(inputText)}&langpair={inputLanguage}|{outputLanguage}";
 
             using (HttpClient client = new HttpClient())
             {

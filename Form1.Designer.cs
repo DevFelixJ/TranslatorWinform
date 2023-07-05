@@ -30,9 +30,9 @@
         {
             this.txtInput = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnTranslate = new System.Windows.Forms.Button();
+            this.cmbInputLanguage = new System.Windows.Forms.ComboBox();
+            this.cmbOutputLanguage = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtInput
@@ -53,24 +53,6 @@
             this.txtOutput.Size = new System.Drawing.Size(699, 142);
             this.txtOutput.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Español";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 227);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Inglés";
-            // 
             // btnTranslate
             // 
             this.btnTranslate.Location = new System.Drawing.Point(279, 183);
@@ -81,14 +63,30 @@
             this.btnTranslate.UseVisualStyleBackColor = true;
             this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
+            // cmbInputLanguage
+            // 
+            this.cmbInputLanguage.FormattingEnabled = true;
+            this.cmbInputLanguage.Location = new System.Drawing.Point(50, 13);
+            this.cmbInputLanguage.Name = "cmbInputLanguage";
+            this.cmbInputLanguage.Size = new System.Drawing.Size(121, 21);
+            this.cmbInputLanguage.TabIndex = 5;
+            // 
+            // cmbOutputLanguage
+            // 
+            this.cmbOutputLanguage.FormattingEnabled = true;
+            this.cmbOutputLanguage.Location = new System.Drawing.Point(50, 216);
+            this.cmbOutputLanguage.Name = "cmbOutputLanguage";
+            this.cmbOutputLanguage.Size = new System.Drawing.Size(121, 21);
+            this.cmbOutputLanguage.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbOutputLanguage);
+            this.Controls.Add(this.cmbInputLanguage);
             this.Controls.Add(this.btnTranslate);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.txtInput);
             this.Name = "Form1";
@@ -102,9 +100,9 @@
 
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTranslate;
+        private System.Windows.Forms.ComboBox cmbInputLanguage;
+        private System.Windows.Forms.ComboBox cmbOutputLanguage;
     }
 }
 
